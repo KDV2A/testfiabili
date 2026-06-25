@@ -1,0 +1,56 @@
+---
+// SolutionCard.astro
+interface Props {
+  title: string;
+  description: string;
+  icon: string;
+  url: string;
+  badge?: string;
+  slug: string;
+  index: number;
+}
+
+const { title, description, icon, url, badge, slug, index } = Astro.props;
+
+// Determine colors based on index parity (1-indexed for the layout logic)
+const isOdd = index % 2 !== 0;
+const iconBgClass = isOdd ? "bg-accent-pink-light" : "bg-primary-fixed/30";
+const iconColorClass = isOdd ? "text-secondary" : "text-primary";
+const hoverBorderClass = isOdd ? "hover:border-secondary/20" : "hover:border-primary/20";
+const linkColorClass = isOdd ? "text-secondary" : "text-primary";
+---
+
+<div class={`bg-white p-10 rounded-[24px] card-shadow border border-gray-100 transition-all duration-500 group hover:-translate-y-2 ${hoverBorderClass}`}>
+  <div class={`w-16 h-16 rounded-2xl flex items-center justify-center mb-8 transition-transform group-hover:scale-110 ${iconBgClass}`}>
+    <span class={`material-symbols-outlined text-3xl ${iconColorClass}`}>{icon}</span>
+  </div>
+  
+  <div class="flex items-center gap-3 mb-4">
+    <h3 class="text-2xl font-bold text-primary font-display">{title}</h3>
+    {badge && (
+      <span class="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-accent-pink-light text-secondary">
+        {badge}
+      </span>
+    )}
+  </div>
+  
+  <p class="text-on-surface-variant mb-8 leading-relaxed text-sm">
+    {description}
+  </p>
+  
+  <ul class="space-y-4 mb-10">
+    <li class="flex items-center gap-3 text-sm font-medium text-primary">
+      <span class={`material-symbols-outlined text-xl ${isOdd ? 'text-secondary' : 'text-primary'}`}>verified</span>
+      Réponses sourcées et vérifiées
+    </li>
+    <li class="flex items-center gap-3 text-sm font-medium text-primary">
+      <span class={`material-symbols-outlined text-xl ${isOdd ? 'text-secondary' : 'text-primary'}`}>verified</span>
+      Veille réglementaire temps réel
+    </li>
+  </ul>
+  
+  <a class={`inline-flex items-center gap-2 font-bold text-sm uppercase tracking-wider group-hover:gap-4 transition-all ${linkColorClass}`} href={`/services/${slug}`}>
+    En savoir plus
+    <span class="material-symbols-outlined text-xl">arrow_forward</span>
+  </a>
+</div>

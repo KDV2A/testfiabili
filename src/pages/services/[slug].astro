@@ -1,0 +1,69 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const services = await getCollection('services');
+  return services.map(entry => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<Layout title={`${entry.data.title} - Fiabilis.ai`} description={entry.data.description}>
+  <Header />
+
+  <main class="pt-20">
+    <!-- Service Hero -->
+    <section class="bg-gradient-hero text-on-primary py-20 relative overflow-hidden">
+      <!-- Brand Decorative Arcs -->
+      <div class="absolute inset-0 pointer-events-none overflow-hidden opacity-30">
+        <svg class="absolute -top-20 -right-20 w-[120%] h-[140%] brand-arc-glow" fill="none" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+          <path d="M-100 800C150 750 450 500 1200 150" opacity="0.4" stroke="#e7317c" stroke-dasharray="1 10" stroke-linecap="round" stroke-width="4"></path>
+          <path d="M-50 850C250 800 650 450 1300 200" stroke="#e95c40" stroke-linecap="round" stroke-width="2.5"></path>
+        </svg>
+      </div>
+      
+      <div class="max-w-4xl mx-auto px-margin-mobile md:px-gutter relative z-10 text-center space-y-6">
+        <a href="/#solutions" class="inline-flex items-center gap-2 text-white/70 hover:text-white transition-colors text-sm font-medium mb-4">
+          <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+          Retour aux solutions
+        </a>
+        <div class="w-20 h-20 rounded-3xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center mx-auto shadow-lg mb-4">
+          <span class="material-symbols-outlined text-white text-4xl">{entry.data.icon}</span>
+        </div>
+        <h1 class="text-4xl md:text-5xl font-bold font-display text-white">{entry.data.title}</h1>
+        <p class="text-lg md:text-xl text-white/80 leading-relaxed font-sans max-w-2xl mx-auto">
+          {entry.data.description}
+        </p>
+      </div>
+    </section>
+
+    <!-- Content Area -->
+    <section class="py-20 bg-background-main">
+      <div class="max-w-3xl mx-auto px-margin-mobile md:px-gutter">
+        <div class="bg-white rounded-[32px] p-8 md:p-16 card-shadow border border-border-subtle">
+          <!-- Rich text styling wrapper -->
+          <article class="prose max-w-none text-on-surface-variant font-sans
+            prose-headings:font-display prose-headings:text-primary prose-headings:font-bold
+            prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6
+            prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4
+            prose-p:leading-relaxed prose-p:mb-6 prose-p:text-base
+            prose-ul:list-disc prose-ul:pl-6 prose-ul:mb-6 prose-ul:space-y-2
+            prose-li:text-base
+            prose-strong:text-primary prose-strong:font-semibold">
+            <Content />
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

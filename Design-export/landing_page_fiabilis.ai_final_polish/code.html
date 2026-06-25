@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fiabilis.ai - L'expertise payroll augmentée par l'IA</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#ffb1c5",
+                        "primary": "#1d3061", 
+                        "tertiary-fixed": "#ffdad3",
+                        "surface-tint": "#4b5d90",
+                        "secondary-fixed": "#ffd9e1",
+                        "surface-container-high": "#e7e8ee",
+                        "surface-bright": "#f8f9ff",
+                        "surface-container-low": "#f2f3fa",
+                        "on-primary": "#ffffff",
+                        "surface-dim": "#d8dae0",
+                        "primary-fixed-dim": "#b3c5ff",
+                        "outline-variant": "#c5c6d0",
+                        "on-primary-container": "#8799d1",
+                        "accent-pink-light": "#fdeaf2",
+                        "border-subtle": "#e9edf2",
+                        "tertiary-container": "#680d00",
+                        "inverse-surface": "#2e3036",
+                        "on-secondary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "secondary-container": "#e7317c",
+                        "on-error": "#ffffff",
+                        "inverse-primary": "#b3c5ff",
+                        "on-primary-fixed-variant": "#334577",
+                        "surface-container": "#ededf4",
+                        "secondary": "#e7317c", 
+                        "brand-orange": "#e95c40", 
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#dbe1ff",
+                        "outline": "#757680",
+                        "on-secondary-fixed": "#3f001b",
+                        "on-surface": "#191c20",
+                        "primary-container": "#1d3061", 
+                        "background": "#f8f9ff",
+                        "on-tertiary-fixed": "#3e0500",
+                        "background-alt": "#e6f0fc",
+                        "on-secondary-container": "#fffbff",
+                        "on-tertiary-container": "#ff6c4e",
+                        "error": "#ba1a1a",
+                        "on-surface-variant": "#45464f",
+                        "on-error-container": "#93000a",
+                        "inverse-on-surface": "#eff0f7",
+                        "surface": "#f8f9ff",
+                        "button-hover": "#d02a6e",
+                        "on-primary-fixed": "#011849",
+                        "on-secondary-fixed-variant": "#8f0046",
+                        "on-tertiary-fixed-variant": "#8c1903",
+                        "tertiary": "#420500",
+                        "on-background": "#191c20",
+                        "surface-variant": "#e1e2e9",
+                        "surface-container-lowest": "#ffffff",
+                        "background-main": "#f7f8fa",
+                        "tertiary-fixed-dim": "#ffb4a5",
+                        "surface-container-highest": "#e1e2e9"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px",
+                        "card": "16px"
+                    },
+                    "spacing": {
+                        "section-gap-lg": "120px",
+                        "section-gap-sm": "60px",
+                        "element-gap": "20px",
+                        "container-max": "1280px",
+                        "margin-mobile": "20px",
+                        "gutter": "32px"
+                    },
+                    "fontFamily": {
+                        "sans": ["Poppins", "sans-serif"],
+                        "headline-lg": ["Poppins"],
+                        "label-sm": ["Poppins"],
+                        "headline-md": ["Poppins"],
+                        "body-md": ["Poppins"],
+                        "body-lg": ["Poppins"],
+                        "label-md": ["Poppins"],
+                        "display-lg": ["Poppins"],
+                        "display-lg-mobile": ["Poppins"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f7f8fa;
+            color: #1d3061;
+            overflow-x: hidden;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .card-shadow {
+            box-shadow: 0 10px 30px -10px rgba(29, 48, 97, 0.1);
+        }
+        .hero-background {
+            background-color: #1d3061;
+        }
+        .nav-blue {
+            background-color: #1d3061;
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        .brand-arc-glow {
+            filter: drop-shadow(0 0 8px rgba(231, 49, 124, 0.3));
+        }
+        .nav-link-effect {
+            position: relative;
+        }
+        .nav-link-effect::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #e7317c;
+            transition: width 0.3s ease;
+        }
+        .nav-link-effect:hover::after {
+            width: 100%;
+        }
+        .bg-gradient-soft {
+            background: linear-gradient(180deg, #f8f9ff 0%, #ffffff 100%);
+        }
+        .bg-gradient-hero {
+            background: radial-gradient(circle at top right, #2a4488, #1d3061);
+        }
+    </style>
+</head>
+<body class="antialiased">
+<header class="fixed top-0 left-0 right-0 z-50 nav-blue border-b border-white/5 h-20 transition-all duration-300">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter h-full flex justify-between items-center">
+<div class="flex items-center gap-12">
+<a class="block h-12" href="#">
+<img alt="Fiabilis.ai" class="h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_vVyCdAzKN4PFLeo2ELIRFLSGt5o__YdAkOk0xSYmFEUH7-XN_UzMoyb2e6AqouFB7Iwx-YyHdMCr6sR4-aBsEXDcPxAubRMt_bS9MI_T7YBOaTOIz1WkOxjpKOMHdHdjso5mnGntYRWggf6ZWxG3l89heX-s_xHmv9Lp4fwYTofOA7tXLRbmPXMm2zuvZtq_llfdJHsm_Fmnejr7vV3dT6pG9cStEqLQa660dLIL7wqotOH471nLMORDtbO-t2WMDw1cNohWFIM"/>
+</a>
+<nav class="hidden lg:flex items-center gap-10">
+<a class="text-white/80 font-medium text-sm nav-link-effect hover:text-white transition-colors" href="#solutions">Solutions</a>
+<a class="text-white/80 font-medium text-sm nav-link-effect hover:text-white transition-colors" href="#expertise">Expertise</a>
+<a class="text-white/80 font-medium text-sm nav-link-effect hover:text-white transition-colors" href="#">Tarifs</a>
+<a class="text-white/80 font-medium text-sm nav-link-effect hover:text-white transition-colors" href="#">Contact</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<a class="hidden md:block text-white/90 font-medium text-sm hover:text-white transition-colors" href="#">Se connecter</a>
+<a class="bg-brand-orange text-white px-7 py-3 rounded-full font-semibold text-sm hover:brightness-110 transition-all transform hover:scale-[1.02] active:scale-95 shadow-lg shadow-brand-orange/20" href="#">Demander une démo</a>
+</div>
+</div>
+</header>
+<main class="pt-20">
+<!-- Hero Section -->
+<section class="relative bg-gradient-hero text-on-primary overflow-hidden py-24 md:py-40">
+<!-- Brand Decorative Arcs -->
+<div class="absolute inset-0 pointer-events-none overflow-hidden opacity-50">
+<svg class="absolute -top-20 -right-20 w-[120%] h-[140%] brand-arc-glow" fill="none" viewbox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+<path d="M-100 800C150 750 450 500 1200 150" opacity="0.4" stroke="#e7317c" stroke-dasharray="1 10" stroke-linecap="round" stroke-width="4"></path>
+<path d="M-50 850C250 800 650 450 1300 200" stroke="#e95c40" stroke-linecap="round" stroke-width="2.5"></path>
+<path d="M0 900C350 850 750 500 1400 250" opacity="0.6" stroke="#ba1a1a" stroke-linecap="round" stroke-width="6"></path>
+<path d="M100 950C450 900 850 550 1500 300" stroke="#e7317c" stroke-linecap="round" stroke-width="1.5"></path>
+</svg>
+</div>
+<div class="relative max-w-container-max mx-auto px-margin-mobile md:px-gutter grid md:grid-cols-2 gap-16 items-center">
+<div class="space-y-10">
+<div class="inline-flex items-center gap-2.5 bg-white/10 backdrop-blur-md px-5 py-2.5 rounded-full border border-white/20">
+<span class="material-symbols-outlined text-secondary-fixed-dim text-[18px]" data-icon="auto_awesome">auto_awesome</span>
+<span class="text-xs font-semibold uppercase tracking-[0.1em] text-white/90">L'IA au service de la conformité</span>
+</div>
+<h1 class="text-4xl md:text-6xl font-bold leading-[1.1] tracking-tight">
+                    L'expertise payroll augmentée par <span class="text-transparent bg-clip-text bg-gradient-to-r from-secondary-fixed-dim to-brand-orange">l'Intelligence Artificielle</span>
+</h1>
+<p class="text-lg md:text-xl font-normal text-white/70 max-w-xl leading-relaxed">
+                    Fiabilis combine 30 ans de conseil haut de gamme avec 6 outils IA de pointe pour sécuriser vos cotisations et libérer votre potentiel humain.
+                </p>
+<div class="flex flex-wrap gap-5 pt-4">
+<a class="bg-secondary text-white px-10 py-5 rounded-full font-semibold text-base hover:bg-button-hover transition-all shadow-2xl shadow-secondary/30 hover:-translate-y-1" href="#solutions">Découvrir nos solutions</a>
+<a class="bg-white/5 backdrop-blur-md text-white border border-white/20 px-10 py-5 rounded-full font-semibold text-base hover:bg-white/10 transition-all hover:-translate-y-1" href="#">Consulter notre expertise</a>
+</div>
+</div>
+<!-- Visual Element: Interactive Card UI -->
+<div class="relative hidden lg:block group animate-float">
+<div class="absolute -inset-10 bg-gradient-to-tr from-secondary/20 to-primary/20 blur-[100px] opacity-40"></div>
+<div class="relative bg-white/5 border border-white/10 backdrop-blur-2xl rounded-[32px] p-10 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.5)]">
+<div class="flex items-center justify-between mb-12">
+<div class="flex gap-2.5">
+<div class="w-3.5 h-3.5 rounded-full bg-[#FF5F57]"></div>
+<div class="w-3.5 h-3.5 rounded-full bg-[#FEBC2E]"></div>
+<div class="w-3.5 h-3.5 rounded-full bg-[#28C840]"></div>
+</div>
+<div class="text-white/40 text-xs font-mono tracking-widest uppercase">system.ready_v4.2</div>
+</div>
+<div class="space-y-6">
+<div class="flex items-center gap-5 bg-white/5 p-6 rounded-2xl border border-white/10 transition-all hover:bg-white/10">
+<div class="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center shadow-lg shadow-secondary/20">
+<span class="material-symbols-outlined text-white" data-icon="psychology">psychology</span>
+</div>
+<div class="flex-1">
+<div class="h-2.5 w-28 bg-white/20 rounded-full mb-3"></div>
+<div class="h-2 w-56 bg-white/10 rounded-full"></div>
+</div>
+<span class="material-symbols-outlined text-green-400 text-3xl" data-icon="check_circle">check_circle</span>
+</div>
+<div class="flex items-center gap-5 bg-white/5 p-6 rounded-2xl border border-white/10 ml-12 transition-all hover:bg-white/10">
+<div class="w-12 h-12 rounded-xl bg-primary flex items-center justify-center shadow-lg border border-white/10">
+<span class="material-symbols-outlined text-white" data-icon="shield">shield</span>
+</div>
+<div class="flex-1">
+<div class="h-2.5 w-36 bg-white/20 rounded-full mb-3"></div>
+<div class="h-2 w-48 bg-white/10 rounded-full"></div>
+</div>
+</div>
+<div class="flex items-center gap-5 bg-white/20 p-6 rounded-2xl border border-white/30 transform scale-[1.05] shadow-2xl transition-all">
+<div class="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined text-white" data-icon="chat_bubble">chat_bubble</span>
+</div>
+<div class="flex-1">
+<div class="h-2.5 w-full bg-white/40 rounded-full mb-3"></div>
+<div class="h-2 w-3/4 bg-white/20 rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Solutions Section -->
+<section class="py-section-gap-lg bg-gradient-soft relative" id="solutions">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter relative">
+<div class="text-center mb-24 space-y-6">
+<h2 class="text-4xl md:text-5xl font-bold text-primary tracking-tight">Nos 6 Solutions IA pour votre Paie</h2>
+<p class="text-lg text-on-surface-variant max-w-2xl mx-auto leading-relaxed">
+                    Une suite complète d'outils intelligents conçus pour automatiser la veille, sécuriser les déclarations et optimiser les coûts sociaux.
+                </p>
+</div>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+<!-- Card 1: Expertis -->
+<div class="bg-white p-10 rounded-[24px] card-shadow border border-gray-100 hover:border-secondary/20 transition-all duration-500 group hover:-translate-y-2">
+<div class="w-16 h-16 rounded-2xl bg-accent-pink-light flex items-center justify-center mb-8 transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined text-secondary text-3xl" data-icon="quiz">quiz</span>
+</div>
+<h3 class="text-2xl font-bold text-primary mb-4">Expertis</h3>
+<p class="text-on-surface-variant mb-8 leading-relaxed">
+                        L'IA conversationnelle spécialisée en droit de la Sécurité sociale. Obtenez des réponses sourcées au BOSS en quelques secondes.
+                    </p>
+<ul class="space-y-4 mb-10">
+<li class="flex items-center gap-3 text-sm font-medium text-primary">
+<span class="material-symbols-outlined text-secondary text-xl" data-icon="verified">verified</span>
+                            Réponses sourcées et vérifiées
+                        </li>
+<li class="flex items-center gap-3 text-sm font-medium text-primary">
+<span class="material-symbols-outlined text-secondary text-xl" data-icon="verified">verified</span>
+                            Veille réglementaire temps réel
+                        </li>
+</ul>
+<a class="inline-flex items-center gap-2 text-secondary font-bold text-sm uppercase tracking-wider group-hover:gap-4 transition-all" href="#">
+                        Visiter le site
+                        <span class="material-symbols-outlined text-xl" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<!-- Card 2: Audit IA -->
+<div class="bg-white p-10 rounded-[24px] card-shadow border border-gray-100 hover:border-primary/20 transition-all duration-500 group hover:-translate-y-2">
+<div class="w-16 h-16 rounded-2xl bg-primary-fixed/30 flex items-center justify-center mb-8 transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="analytics">analytics</span>
+</div>
+<h3 class="text-2xl font-bold text-primary mb-4">Social Audit</h3>
+<p class="text-on-surface-variant mb-8 leading-relaxed">
+                        Analysez massivement vos DSN pour identifier les anomalies de cotisations et les opportunités d'optimisation sécurisée.
+                    </p>
+<ul class="space-y-4 mb-10">
+<li class="flex items-center gap-3 text-sm font-medium text-primary">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="verified">verified</span>
+                            Scan automatique multi-DSN
+                        </li>
+<li class="flex items-center gap-3 text-sm font-medium text-primary">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="verified">verified</span>
+                            Reporting stratégique RH
+                        </li>
+</ul>
+<a class="inline-flex items-center gap-2 text-primary font-bold text-sm uppercase tracking-wider group-hover:gap-4 transition-all" href="#">
+                        Visiter le site
+                        <span class="material-symbols-outlined text-xl" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<!-- Card 3: CCN Navigator -->
+<div class="bg-white p-10 rounded-[24px] card-shadow border border-gray-100 hover:border-secondary/20 transition-all duration-500 group hover:-translate-y-2">
+<div class="w-16 h-16 rounded-2xl bg-accent-pink-light flex items-center justify-center mb-8 transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined text-secondary text-3xl" data-icon="menu_book">menu_book</span>
+</div>
+<h3 class="text-2xl font-bold text-primary mb-4">CCN Navigator</h3>
+<p class="text-on-surface-variant mb-8 leading-relaxed">
+                        Centralisez et naviguez dans toutes les conventions collectives. Traduction instantanée des clauses complexes.
+                    </p>
+<ul class="space-y-4 mb-10">
+<li class="flex items-center gap-3 text-sm font-medium text-primary">
+<span class="material-symbols-outlined text-secondary text-xl" data-icon="verified">verified</span>
+                            100% des CCN françaises
+                        </li>
+<li class="flex items-center gap-3 text-sm font-medium text-primary">
+<span class="material-symbols-outlined text-secondary text-xl" data-icon="verified">verified</span>
+                            Alertes mises à jour légales
+                        </li>
+</ul>
+<a class="inline-flex items-center gap-2 text-secondary font-bold text-sm uppercase tracking-wider group-hover:gap-4 transition-all" href="#">
+                        Visiter le site
+                        <span class="material-symbols-outlined text-xl" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<!-- Card 4: Compliance Shield -->
+<div class="bg-white p-10 rounded-[24px] card-shadow border border-gray-100 hover:border-primary/20 transition-all duration-500 group hover:-translate-y-2">
+<div class="w-16 h-16 rounded-2xl bg-primary-fixed/30 flex items-center justify-center mb-8 transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="verified_user">verified_user</span>
+</div>
+<h3 class="text-2xl font-bold text-primary mb-4">Compliance Shield</h3>
+<p class="text-on-surface-variant mb-8 leading-relaxed">
+                        Garantissez une conformité totale face aux contrôles URSSAF. Pré-audit automatique de vos documents probants.
+                    </p>
+<ul class="space-y-4 mb-10">
+<li class="flex items-center gap-3 text-sm font-medium text-primary">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="verified">verified</span>
+                            Détection anticipée des risques
+                        </li>
+<li class="flex items-center gap-3 text-sm font-medium text-primary">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="verified">verified</span>
+                            Dossier de défense automatisé
+                        </li>
+</ul>
+<a class="inline-flex items-center gap-2 text-primary font-bold text-sm uppercase tracking-wider group-hover:gap-4 transition-all" href="#">
+                        Visiter le site
+                        <span class="material-symbols-outlined text-xl" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<!-- Card 5: Smart Onboarding -->
+<div class="bg-white p-10 rounded-[24px] card-shadow border border-gray-100 hover:border-secondary/20 transition-all duration-500 group hover:-translate-y-2">
+<div class="w-16 h-16 rounded-2xl bg-accent-pink-light flex items-center justify-center mb-8 transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined text-secondary text-3xl" data-icon="person_add">person_add</span>
+</div>
+<h3 class="text-2xl font-bold text-primary mb-4">Smart Onboarding</h3>
+<p class="text-on-surface-variant mb-8 leading-relaxed">
+                        L'IA qui assiste vos gestionnaires dans la saisie et le paramétrage des nouveaux dossiers complexes.
+                    </p>
+<ul class="space-y-4 mb-10">
+<li class="flex items-center gap-3 text-sm font-medium text-primary">
+<span class="material-symbols-outlined text-secondary text-xl" data-icon="verified">verified</span>
+                            Gain de temps de 40% sur la saisie
+                        </li>
+<li class="flex items-center gap-3 text-sm font-medium text-primary">
+<span class="material-symbols-outlined text-secondary text-xl" data-icon="verified">verified</span>
+                            Zéro erreur de paramétrage
+                        </li>
+</ul>
+<a class="inline-flex items-center gap-2 text-secondary font-bold text-sm uppercase tracking-wider group-hover:gap-4 transition-all" href="#">
+                        Visiter le site
+                        <span class="material-symbols-outlined text-xl" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<!-- Card 6: Law Intelligence -->
+<div class="bg-white p-10 rounded-[24px] card-shadow border border-gray-100 hover:border-primary/20 transition-all duration-500 group hover:-translate-y-2">
+<div class="w-16 h-16 rounded-2xl bg-primary-fixed/30 flex items-center justify-center mb-8 transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="balance">balance</span>
+</div>
+<h3 class="text-2xl font-bold text-primary mb-4">Law Intelligence</h3>
+<p class="text-on-surface-variant mb-8 leading-relaxed">
+                        Base de données juridique prédictive spécialisée dans les contentieux de la sécurité sociale.
+                    </p>
+<ul class="space-y-4 mb-10">
+<li class="flex items-center gap-3 text-sm font-medium text-primary">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="verified">verified</span>
+                            Analyse de jurisprudence
+                        </li>
+<li class="flex items-center gap-3 text-sm font-medium text-primary">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="verified">verified</span>
+                            Calcul de probabilités de succès
+                        </li>
+</ul>
+<a class="inline-flex items-center gap-2 text-primary font-bold text-sm uppercase tracking-wider group-hover:gap-4 transition-all" href="#">
+                        Visiter le site
+                        <span class="material-symbols-outlined text-xl" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Expertise Section -->
+<section class="py-section-gap-lg bg-white overflow-hidden relative" id="expertise">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter relative">
+<div class="grid md:grid-cols-2 gap-20 items-center">
+<div class="order-2 md:order-1 relative">
+<div class="relative rounded-[32px] overflow-hidden shadow-[0_40px_80px_-20px_rgba(29,48,97,0.2)]">
+<img class="w-full h-auto object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuMNCm4cKoMHLMfkh8QdYw80Uk4LOw3aznRQi-vKrPTgUuZ2HJGcaOHwMW_F3NgzLSBNpJI1Bz2R_8S8tRvxA8YTSLodiS9Gs7824iNiMpRipSHpH4vSPJgBOQtN9_6qnzbx9UBk_3DibMfKNjmOzxcD2seOvoVmQF9hMSARadJSYBU8JTjs_qIoYBB_5tXaYjDDBuAgaYXerhr_tl20MhGHJxLH-UfviROr9GJdKvgZTJSO2HZR65Vor0-vZ3HE86a8fuJGMk9hI"/>
+<!-- Overlay badge -->
+<div class="absolute bottom-8 left-8 bg-primary text-white p-8 rounded-3xl shadow-2xl max-w-[280px] border border-white/10 backdrop-blur-md bg-opacity-95">
+<div class="text-4xl font-bold mb-2">30+ ans</div>
+<div class="text-sm opacity-80 font-medium">D'expertise terrain en conseil paie &amp; social</div>
+</div>
+</div>
+<!-- Decorative element behind image -->
+<div class="absolute -z-10 -top-10 -left-10 w-40 h-40 bg-accent-pink-light rounded-full opacity-50 blur-3xl"></div>
+<div class="absolute -z-10 -bottom-10 -right-10 w-60 h-60 bg-primary-fixed/30 rounded-full opacity-50 blur-3xl"></div>
+</div>
+<div class="order-1 md:order-2 space-y-10">
+<div class="inline-block px-5 py-2 bg-accent-pink-light text-secondary rounded-full font-bold text-xs uppercase tracking-widest">
+                        Notre ADN
+                    </div>
+<h2 class="text-4xl md:text-5xl font-bold text-primary tracking-tight leading-tight">Le Conseil au cœur de la technologie</h2>
+<p class="text-lg text-on-surface-variant leading-relaxed">
+                        L'IA ne remplace pas l'expertise, elle l'augmente. Chez Fiabilis, nos outils sont conçus par des consultants pour des consultants.
+                    </p>
+<div class="space-y-8">
+<div class="flex gap-6">
+<div class="flex-shrink-0 w-14 h-14 rounded-2xl bg-primary-fixed/40 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="groups">groups</span>
+</div>
+<div>
+<h4 class="font-bold text-xl text-primary mb-2">Synergie Humain-Machine</h4>
+<p class="text-on-surface-variant leading-relaxed">Nos consultants valident chaque insight généré par l'IA pour garantir une précision absolue.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<div class="flex-shrink-0 w-14 h-14 rounded-2xl bg-primary-fixed/40 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="security_update_good">security_update_good</span>
+</div>
+<div>
+<h4 class="font-bold text-xl text-primary mb-2">Protection des Données</h4>
+<p class="text-on-surface-variant leading-relaxed">Sécurité de niveau bancaire. Vos données sociales sont cryptées et hébergées exclusivement en France.</p>
+</div>
+</div>
+</div>
+<div class="pt-6">
+<button class="border-2 border-primary text-primary px-10 py-4 rounded-full font-bold text-base hover:bg-primary hover:text-white transition-all transform hover:-translate-y-1">En savoir plus sur notre méthodologie</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-section-gap-lg">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
+<div class="bg-primary-container rounded-[40px] p-12 md:p-24 text-center relative overflow-hidden group shadow-2xl shadow-primary/20">
+<!-- Brand background lines -->
+<div class="absolute inset-0 pointer-events-none overflow-hidden opacity-20">
+<svg class="absolute w-full h-full" fill="none" viewbox="0 0 1000 400" xmlns="http://www.w3.org/2000/svg">
+<path d="M-100 350C400 300 1000 100 1500 50" stroke="#e95c40" stroke-linecap="round" stroke-width="4"></path>
+</svg>
+</div>
+<div class="relative z-10 space-y-10">
+<h2 class="text-4xl md:text-6xl font-bold text-white tracking-tight leading-tight">Prêt à propulser votre gestion paie ?</h2>
+<p class="text-xl text-white/70 max-w-2xl mx-auto leading-relaxed">
+                        Rejoignez plus de 500 entreprises qui utilisent déjà la suite Fiabilis.ai pour sécuriser leur conformité sociale.
+                    </p>
+<div class="flex flex-col md:flex-row justify-center gap-6 pt-6">
+<a class="bg-brand-orange text-white px-12 py-5 rounded-full font-bold text-lg hover:brightness-110 transition-all shadow-xl shadow-brand-orange/30 hover:-translate-y-1" href="#">Prendre rendez-vous avec un expert</a>
+<a class="bg-white text-primary px-12 py-5 rounded-full font-bold text-lg hover:bg-gray-100 transition-all hover:-translate-y-1" href="#">Télécharger notre brochure</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-primary text-on-primary pt-24 pb-12">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
+<div class="grid md:grid-cols-12 gap-12 mb-20">
+<div class="md:col-span-4 space-y-8">
+<img alt="Fiabilis.ai" class="h-12 w-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_vVyCdAzKN4PFLeo2ELIRFLSGt5o__YdAkOk0xSYmFEUH7-XN_UzMoyb2e6AqouFB7Iwx-YyHdMCr6sR4-aBsEXDcPxAubRMt_bS9MI_T7YBOaTOIz1WkOxjpKOMHdHdjso5mnGntYRWggf6ZWxG3l89heX-s_xHmv9Lp4fwYTofOA7tXLRbmPXMm2zuvZtq_llfdJHsm_Fmnejr7vV3dT6pG9cStEqLQa660dLIL7wqotOH471nLMORDtbO-t2WMDw1cNohWFIM"/>
+<p class="text-white/60 text-base leading-relaxed max-w-sm">
+                    Expertise en paie et conseil social augmentée par l'IA. Pour une conformité sans compromis et une performance RH décuplée.
+                </p>
+<div class="flex gap-4">
+<a class="w-11 h-11 rounded-full bg-white/5 flex items-center justify-center hover:bg-secondary transition-all hover:-translate-y-1 border border-white/10" href="#">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
+</a>
+<a class="w-11 h-11 rounded-full bg-white/5 flex items-center justify-center hover:bg-secondary transition-all hover:-translate-y-1 border border-white/10" href="#">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path></svg>
+</a>
+</div>
+</div>
+<div class="md:col-span-2 space-y-6">
+<h4 class="font-bold text-lg tracking-tight">Solutions</h4>
+<ul class="space-y-4 text-sm text-white/50">
+<li><a class="hover:text-secondary transition-colors" href="#">Expertis IA</a></li>
+<li><a class="hover:text-secondary transition-colors" href="#">Audit Social</a></li>
+<li><a class="hover:text-secondary transition-colors" href="#">Conventions Collectives</a></li>
+<li><a class="hover:text-secondary transition-colors" href="#">Droit URSSAF</a></li>
+</ul>
+</div>
+<div class="md:col-span-2 space-y-6">
+<h4 class="font-bold text-lg tracking-tight">Société</h4>
+<ul class="space-y-4 text-sm text-white/50">
+<li><a class="hover:text-secondary transition-colors" href="#">À propos</a></li>
+<li><a class="hover:text-secondary transition-colors" href="#">Expertise</a></li>
+<li><a class="hover:text-secondary transition-colors" href="#">Carrières</a></li>
+<li><a class="hover:text-secondary transition-colors" href="#">Contact</a></li>
+</ul>
+</div>
+<div class="md:col-span-4 space-y-6">
+<h4 class="font-bold text-lg tracking-tight">Contact</h4>
+<ul class="space-y-5 text-sm text-white/50">
+<li class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-xl" data-icon="location_on">location_on</span>
+</div>
+                        Paris, France
+                    </li>
+<li class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-xl" data-icon="mail">mail</span>
+</div>
+                        contact@fiabilis.ai
+                    </li>
+<li class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-xl" data-icon="phone">phone</span>
+</div>
+                        +33 (0)1 00 00 00 00
+                    </li>
+</ul>
+</div>
+</div>
+<div class="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[13px] text-white/30">
+<p>© 2024 Fiabilis.ai - Conseil en paie augmenté par l'IA. Tous droits réservés.</p>
+<div class="flex gap-10">
+<a class="hover:text-white transition-colors" href="#">Mentions légales</a>
+<a class="hover:text-white transition-colors" href="#">Confidentialité</a>
+<a class="hover:text-white transition-colors" href="#">CGU</a>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

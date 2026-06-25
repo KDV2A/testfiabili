@@ -1,0 +1,23 @@
+---
+// Header.astro
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-primary border-b border-white/5 h-20 transition-all duration-300">
+  <div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter h-full flex justify-between items-center">
+    <div class="flex items-center gap-12">
+      <a class="block h-12" href="/">
+        <img alt="Fiabilis.ai" class="h-full object-contain" src="/logo.png" />
+      </a>
+      <nav class="hidden lg:flex items-center gap-10">
+        <a class="text-white/80 font-medium text-sm nav-link-effect hover:text-white transition-colors" href="#solutions">Solutions</a>
+        <a class="text-white/80 font-medium text-sm nav-link-effect hover:text-white transition-colors" href="#expertise">Expertise</a>
+        <a class="text-white/80 font-medium text-sm nav-link-effect hover:text-white transition-colors" href="#">Tarifs</a>
+        <a class="text-white/80 font-medium text-sm nav-link-effect hover:text-white transition-colors" href="#">Contact</a>
+      </nav>
+    </div>
+    <div class="flex items-center gap-6">
+      <a class="hidden md:block text-white/90 font-medium text-sm hover:text-white transition-colors" href="#">Se connecter</a>
+      <a class="bg-brand-orange text-white px-7 py-3 rounded-full font-semibold text-sm hover:brightness-110 transition-all transform hover:scale-[1.02] active:scale-95 shadow-lg shadow-brand-orange/20" href="#">Demander une démo</a>
+    </div>
+  </div>
+</header>

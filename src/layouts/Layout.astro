@@ -1,0 +1,43 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const { 
+	title = "Fiabilis.ai - L'expertise payroll augmentée par l'IA", 
+	description = "Fiabilis combine 30 ans de conseil haut de gamme avec 6 outils IA de pointe pour sécuriser vos cotisations et libérer votre potentiel humain." 
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="fr" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		
+		<!-- Google Fonts & Material Icons -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+	</head>
+	<body class="antialiased text-primary bg-background-main font-sans selection:bg-secondary selection:text-white">
+		<slot />
+	</body>
+</html>
+
+<style is:global>
+	/* Global overrides if needed */
+	.material-symbols-outlined {
+		font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+		display: inline-block;
+		vertical-align: middle;
+	}
+</style>
