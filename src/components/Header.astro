@@ -1,12 +1,14 @@
 ---
 // Header.astro
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.png';
 ---
 
 <header class="fixed top-0 left-0 right-0 z-50 bg-primary border-b border-white/5 h-20 transition-all duration-300">
   <div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter h-full flex justify-between items-center">
     <div class="flex items-center gap-12">
       <a class="block h-12" href="/">
-        <img alt="Fiabilis.ai" class="h-full object-contain" src="/logo.png" />
+        <Image src={logo} alt="Fiabilis.ai" class="h-full w-auto object-contain" />
       </a>
       <nav class="hidden lg:flex items-center gap-10">
         <a class="text-white/80 font-medium text-sm nav-link-effect hover:text-white transition-colors" href="#solutions">Solutions</a>

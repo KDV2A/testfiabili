@@ -1,5 +1,7 @@
 ---
 // Expertise.astro
+import { Image } from 'astro:assets';
+import expertiseImg from '../assets/expertise.png';
 ---
 
 <section class="py-section-gap-lg bg-white overflow-hidden relative" id="expertise">
@@ -7,7 +9,7 @@
     <div class="grid md:grid-cols-2 gap-20 items-center">
       <div class="order-2 md:order-1 relative">
         <div class="relative rounded-[32px] overflow-hidden shadow-[0_40px_80px_-20px_rgba(29,48,97,0.2)]">
-          <img class="w-full h-auto object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuMNCm4cKoMHLMfkh8QdYw80Uk4LOw3aznRQi-vKrPTgUuZ2HJGcaOHwMW_F3NgzLSBNpJI1Bz2R_8S8tRvxA8YTSLodiS9Gs7824iNiMpRipSHpH4vSPJgBOQtN9_6qnzbx9UBk_3DibMfKNjmOzxcD2seOvoVmQF9hMSARadJSYBU8JTjs_qIoYBB_5tXaYjDDBuAgaYXerhr_tl20MhGHJxLH-UfviROr9GJdKvgZTJSO2HZR65Vor0-vZ3HE86a8fuJGMk9hI" alt="Notre expertise terrain" />
+          <Image src={expertiseImg} alt="Notre expertise terrain" class="w-full h-auto object-cover" />
           <!-- Overlay badge -->
           <div class="absolute bottom-8 left-8 bg-primary text-white p-8 rounded-3xl shadow-2xl max-w-[280px] border border-white/10 backdrop-blur-md bg-opacity-95">
             <div class="text-4xl font-bold mb-2 font-display">30+ ans</div>

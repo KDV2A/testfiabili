@@ -1,12 +1,14 @@
 ---
 // Footer.astro
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.png';
 ---
 
 <footer class="bg-primary text-on-primary pt-24 pb-12">
   <div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
     <div class="grid md:grid-cols-12 gap-12 mb-20">
       <div class="md:col-span-4 space-y-8">
-        <img alt="Fiabilis.ai" class="h-12 w-auto" src="/logo.png" />
+        <Image src={logo} alt="Fiabilis.ai" class="h-12 w-auto object-contain" />
         <p class="text-white/60 text-base leading-relaxed max-w-sm font-sans">
           Expertise en paie et conseil social augmentée par l'IA. Pour une conformité sans compromis et une performance RH décuplée.
         </p>
