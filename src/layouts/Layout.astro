@@ -35,6 +35,17 @@ const {
 		
 		<!-- Load Material Symbols Outlined asynchronously to avoid blocking the initial render -->
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" media="print" onload="this.media='all'" />
+
+		<!-- Prevent search engines from indexing development/test domains -->
+		<script is:inline>
+			const prodDomains = ['fiabilis.ai', 'www.fiabilis.ai'];
+			if (!prodDomains.includes(window.location.hostname)) {
+				const meta = document.createElement('meta');
+				meta.name = 'robots';
+				meta.content = 'noindex, nofollow';
+				document.head.appendChild(meta);
+			}
+		</script>
 	</head>
 	<body class="antialiased text-primary bg-background-main font-sans selection:bg-secondary selection:text-white">
 		<slot />
