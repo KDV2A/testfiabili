@@ -1,5 +1,5 @@
 ---
-// SmoothScroll component with subtle card overlap dynamics
+// SmoothScroll component with subtle card overlap dynamics & Hero differential parallax
 ---
 
 <script>
@@ -38,6 +38,34 @@
       }
     });
   });
+
+  // Hero differential parallax between text block and 3D graphic
+  const heroText = document.querySelector<HTMLElement>('.hero-text-block');
+  const heroImage = document.querySelector<HTMLElement>('.hero-image-block');
+
+  if (heroText && heroImage) {
+    gsap.to(heroText, {
+      y: -40,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '#hero',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: 1,
+      },
+    });
+
+    gsap.to(heroImage, {
+      y: 50,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '#hero',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: 1.2,
+      },
+    });
+  }
 
   // Subtle Card Overlap Dynamics on Scroll
   const stackedSections = document.querySelectorAll<HTMLElement>('.stacked-block');
