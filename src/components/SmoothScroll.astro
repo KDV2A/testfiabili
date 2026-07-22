@@ -1,5 +1,5 @@
 ---
-// SmoothScroll component with subtle card overlap dynamics & Hero differential parallax
+// SmoothScroll component with subtle card overlap dynamics & Grid spotlight for all white blocks
 ---
 
 <script>
@@ -66,6 +66,37 @@
       },
     });
   }
+
+  // Interactive Cursor Grid Spotlight for all white blocks (Hero, Personas, Trust)
+  const whiteSpotlightSections = document.querySelectorAll<HTMLElement>('section.bg-white');
+
+  whiteSpotlightSections.forEach((section) => {
+    const gridSpotlight = section.querySelector<HTMLElement>('[id$="-grid-spotlight"]');
+    const spotlightGlow = section.querySelector<HTMLElement>('[id$="-spotlight-glow"]');
+
+    if (gridSpotlight && spotlightGlow) {
+      let mouseX = 0;
+      let mouseY = 0;
+      let ticking = false;
+
+      section.addEventListener('mousemove', (e) => {
+        const rect = section.getBoundingClientRect();
+        mouseX = e.clientX - rect.left;
+        mouseY = e.clientY - rect.top;
+
+        if (!ticking) {
+          requestAnimationFrame(() => {
+            gridSpotlight.style.setProperty('--mouse-x', `${mouseX}px`);
+            gridSpotlight.style.setProperty('--mouse-y', `${mouseY}px`);
+            spotlightGlow.style.setProperty('--mouse-x', `${mouseX}px`);
+            spotlightGlow.style.setProperty('--mouse-y', `${mouseY}px`);
+            ticking = false;
+          });
+          ticking = true;
+        }
+      });
+    }
+  });
 
   // Subtle Card Overlap Dynamics on Scroll
   const stackedSections = document.querySelectorAll<HTMLElement>('.stacked-block');

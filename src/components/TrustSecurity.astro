@@ -19,8 +19,36 @@ const certifications = [
 ];
 ---
 
-<section class="relative bg-white z-50 py-40 md:py-60 min-h-screen flex flex-col justify-center block-rounded-top shadow-[0_-25px_60px_rgba(0,0,0,0.08)] -mt-20 stacked-block" id="trust">
-  <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop text-center stacked-content w-full">
+<section class="relative bg-white z-50 py-40 md:py-60 min-h-screen flex flex-col justify-center block-rounded-top shadow-[0_-25px_60px_rgba(0,0,0,0.08)] -mt-20 stacked-block group/trust overflow-hidden" id="trust">
+  <!-- Subtle Base Grid Pattern -->
+  <div class="absolute inset-0 pointer-events-none z-0 opacity-15 bg-[linear-gradient(to_right,#031a4b0d_1px,transparent_1px),linear-gradient(to_bottom,#031a4b0d_1px,transparent_1px)] bg-[size:80px_28px]"></div>
+
+  <!-- High-Performance Interactive Cursor Grid Spotlight -->
+  <div 
+    id="trust-grid-spotlight" 
+    class="absolute inset-0 pointer-events-none z-0 transition-opacity duration-500 opacity-0 group-hover/trust:opacity-100"
+    style="
+      background-image: linear-gradient(to right, rgba(182, 0, 90, 0.3) 1px, transparent 1px), linear-gradient(to bottom, rgba(3, 26, 75, 0.3) 1px, transparent 1px);
+      background-size: 80px 28px;
+      -webkit-mask-image: radial-gradient(480px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), black 0%, transparent 100%);
+      mask-image: radial-gradient(480px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), black 0%, transparent 100%);
+      will-change: transform;
+    "
+  >
+  </div>
+
+  <!-- Spotlight Ambient AI Glow -->
+  <div 
+    id="trust-spotlight-glow" 
+    class="absolute inset-0 pointer-events-none z-0 transition-opacity duration-500 opacity-0 group-hover/trust:opacity-100"
+    style="
+      background: radial-gradient(520px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(231, 49, 124, 0.13) 0%, rgba(3, 26, 75, 0.04) 50%, transparent 80%);
+      will-change: transform;
+    "
+  >
+  </div>
+
+  <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop text-center stacked-content w-full relative z-10">
     <h2 class="font-poppins font-semibold text-2xl sm:text-3xl md:text-4xl text-primary mb-16 tracking-tight gsap-reveal">{t('trust.title')}</h2>
     
     <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 gsap-card-grid">
