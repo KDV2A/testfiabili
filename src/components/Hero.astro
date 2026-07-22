@@ -2,8 +2,37 @@
 // Hero section block (Block 1)
 ---
 
-<section class="relative bg-white z-10 py-40 md:py-60 min-h-screen flex flex-col items-center justify-center overflow-hidden stacked-block" id="hero">
-  <div class="ai-orb w-[500px] h-[500px] -top-20 -left-20"></div>
+<section class="relative bg-white z-10 py-40 md:py-60 min-h-screen flex flex-col items-center justify-center overflow-hidden stacked-block group/hero" id="hero">
+  <!-- Subtle Base Grid Pattern -->
+  <div class="absolute inset-0 pointer-events-none z-0 opacity-15 bg-[linear-gradient(to_right,#031a4b0d_1px,transparent_1px),linear-gradient(to_bottom,#031a4b0d_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+
+  <!-- High-Performance Interactive Cursor Grid Spotlight -->
+  <div 
+    id="hero-grid-spotlight" 
+    class="absolute inset-0 pointer-events-none z-0 transition-opacity duration-500 opacity-0 group-hover/hero:opacity-100"
+    style="
+      background-image: linear-gradient(to right, rgba(182, 0, 90, 0.3) 1px, transparent 1px), linear-gradient(to bottom, rgba(3, 26, 75, 0.3) 1px, transparent 1px);
+      background-size: 40px 40px;
+      -webkit-mask-image: radial-gradient(350px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), black 0%, transparent 100%);
+      mask-image: radial-gradient(350px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), black 0%, transparent 100%);
+      will-change: transform;
+    "
+  >
+  </div>
+
+  <!-- Spotlight Ambient AI Glow -->
+  <div 
+    id="hero-spotlight-glow" 
+    class="absolute inset-0 pointer-events-none z-0 transition-opacity duration-500 opacity-0 group-hover/hero:opacity-100"
+    style="
+      background: radial-gradient(400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(231, 49, 124, 0.12) 0%, rgba(3, 26, 75, 0.04) 50%, transparent 80%);
+      will-change: transform;
+    "
+  >
+  </div>
+
+  <div class="ai-orb w-[500px] h-[500px] -top-20 -left-20 pointer-events-none"></div>
+
   <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid lg:grid-cols-3 gap-16 items-center relative z-10 stacked-content w-full">
     <div class="lg:col-span-2 space-y-8 gsap-reveal">
       <h1 class="font-poppins font-semibold text-4xl sm:text-5xl lg:text-6xl leading-[1.15] text-primary tracking-tight">
@@ -57,3 +86,32 @@
     </div>
   </div>
 </section>
+
+<script>
+  const hero = document.getElementById('hero');
+  const gridSpotlight = document.getElementById('hero-grid-spotlight');
+  const spotlightGlow = document.getElementById('hero-spotlight-glow');
+
+  if (hero && gridSpotlight && spotlightGlow) {
+    let mouseX = 0;
+    let mouseY = 0;
+    let ticking = false;
+
+    hero.addEventListener('mousemove', (e) => {
+      const rect = hero.getBoundingClientRect();
+      mouseX = e.clientX - rect.left;
+      mouseY = e.clientY - rect.top;
+
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          gridSpotlight.style.setProperty('--mouse-x', `${mouseX}px`);
+          gridSpotlight.style.setProperty('--mouse-y', `${mouseY}px`);
+          spotlightGlow.style.setProperty('--mouse-x', `${mouseX}px`);
+          spotlightGlow.style.setProperty('--mouse-y', `${mouseY}px`);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+  }
+</script>
