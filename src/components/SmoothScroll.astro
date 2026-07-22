@@ -120,48 +120,48 @@
     }
   });
 
-  // GSAP Scroll Reveal for Cards and Titles
+  // GSAP Scroll Reveal for Cards and Titles - Faster, responsive trigger
   const revealElements = document.querySelectorAll<HTMLElement>('.gsap-reveal');
   revealElements.forEach((el) => {
     gsap.fromTo(
       el,
       {
-        y: 40,
+        y: 25,
         opacity: 0,
       },
       {
         y: 0,
         opacity: 1,
-        duration: 1,
-        ease: 'power3.out',
+        duration: 0.6,
+        ease: 'power2.out',
         scrollTrigger: {
           trigger: el,
-          start: 'top 85%',
+          start: 'top 92%',
           toggleActions: 'play none none reverse',
         },
       }
     );
   });
 
-  // Stagger reveal for card grids
+  // Stagger reveal for card grids - Snappy & fast
   const cardGrids = document.querySelectorAll<HTMLElement>('.gsap-card-grid');
   cardGrids.forEach((grid) => {
     const cards = grid.children;
     gsap.fromTo(
       cards,
       {
-        y: 40,
+        y: 25,
         opacity: 0,
       },
       {
         y: 0,
         opacity: 1,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: 'power3.out',
+        duration: 0.5,
+        stagger: 0.08,
+        ease: 'power2.out',
         scrollTrigger: {
           trigger: grid,
-          start: 'top 80%',
+          start: 'top 88%',
           toggleActions: 'play none none reverse',
         },
       }
