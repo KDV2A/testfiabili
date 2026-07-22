@@ -2,58 +2,36 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
-import SolutionCard from '../components/SolutionCard.astro';
+import SolutionsGrid from '../components/SolutionsGrid.astro';
+import Personas from '../components/Personas.astro';
 import Expertise from '../components/Expertise.astro';
+import TrustSecurity from '../components/TrustSecurity.astro';
 import CTA from '../components/CTA.astro';
 import Footer from '../components/Footer.astro';
-import { getCollection } from 'astro:content';
-
-// Get services collection and filter/sort if needed
-const allServices = await getCollection('services');
-const featuredServices = allServices.filter(service => service.data.isFeatured !== false);
 ---
 
 <Layout>
   <!-- Navigation Header -->
   <Header />
 
-  <!-- Main Content wrapper with padding-top to compensate fixed header -->
-  <main class="pt-20">
-    <!-- Hero Section -->
+  <!-- Main Content Stacked Blocks -->
+  <main class="relative">
+    <!-- Block 1: Hero Section (White) -->
     <Hero />
 
-    <!-- Solutions Section -->
-    <section class="py-section-gap-lg bg-gradient-soft relative" id="solutions">
-      <div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter relative">
-        <div class="text-center mb-24 space-y-6">
-          <h2 class="text-4xl md:text-5xl font-bold text-primary tracking-tight font-display">
-            Nos Solutions IA pour votre Paie
-          </h2>
-          <p class="text-lg text-on-surface-variant max-w-2xl mx-auto leading-relaxed font-sans">
-            Une suite complète d'outils intelligents conçus pour automatiser la veille, sécuriser les déclarations et optimiser les coûts sociaux.
-          </p>
-        </div>
-        
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {featuredServices.map((service, index) => (
-            <SolutionCard
-              title={service.data.title}
-              description={service.data.description}
-              icon={service.data.icon}
-              url={service.data.url || '#'}
-              badge={service.data.badge}
-              slug={service.id}
-              index={index + 1}
-            />
-          ))}
-        </div>
-      </div>
-    </section>
+    <!-- Block 2: Solutions Grid (Brand Blue) -->
+    <SolutionsGrid />
 
-    <!-- Notre ADN / Expertise Section -->
+    <!-- Block 3: Personas (White) -->
+    <Personas />
+
+    <!-- Block 4: Expertise (Brand Blue) -->
     <Expertise />
 
-    <!-- Call to Action Section -->
+    <!-- Block 5: Trust & Security (White) -->
+    <TrustSecurity />
+
+    <!-- Block 6: Final CTA (Brand Blue) -->
     <CTA />
   </main>
 

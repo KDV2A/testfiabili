@@ -1,0 +1,62 @@
+---
+// Block 3: Personas (White)
+const personas = [
+  {
+    title: "DRH & CFO",
+    icon: "groups",
+    benefits: [
+      "Maîtrise des risques sociaux",
+      "Optimisation des budgets RH",
+      "Reporting instantané"
+    ]
+  },
+  {
+    title: "Consultants",
+    icon: "psychology",
+    benefits: [
+      "Outils d'analyse automatisés",
+      "Fiabilisation des jeux de données",
+      "Plateforme collaborative"
+    ]
+  },
+  {
+    title: "Communes",
+    icon: "location_city",
+    benefits: [
+      "Collecte optimisée des taxes",
+      "Gestion de la mobilité urbaine",
+      "Analyse du tissu économique"
+    ]
+  }
+];
+---
+
+<section class="relative bg-white z-30 py-40 md:py-60 min-h-screen flex flex-col justify-center block-rounded-top shadow-[0_-25px_60px_rgba(0,0,0,0.08)] -mt-20 stacked-block" id="personas">
+  <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop stacked-content w-full">
+    <div class="text-center mb-16 gsap-reveal">
+      <h2 class="font-poppins font-semibold text-2xl sm:text-3xl md:text-4xl text-primary mb-4 tracking-tight">Adapté à votre réalité</h2>
+      <p class="font-poppins font-normal text-base md:text-lg text-on-surface-variant max-w-2xl mx-auto leading-relaxed">Notre écosystème s'adapte à chaque profil pour une productivité décuplée.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 gsap-card-grid">
+      {personas.map((item) => (
+        <div class="bg-surface-container-low p-8 md:p-10 rounded-[40px] border border-outline-variant/10 hover:shadow-xl transition-all group duration-300">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="p-4 rounded-2xl bg-white shadow-sm group-hover:bg-secondary group-hover:text-white transition-colors duration-300">
+              <span class="material-symbols-outlined text-4xl">{item.icon}</span>
+            </div>
+            <h3 class="font-poppins font-normal text-xl md:text-2xl text-primary">{item.title}</h3>
+          </div>
+          <ul class="space-y-4 font-poppins font-normal text-base md:text-lg text-on-surface-variant">
+            {item.benefits.map((benefit) => (
+              <li class="flex items-start gap-3">
+                <span class="material-symbols-outlined text-secondary text-sm pt-1" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                <span>{benefit}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
