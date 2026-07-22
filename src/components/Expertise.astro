@@ -1,22 +1,32 @@
 ---
 // Block 4: Expertise (Brand Blue)
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { languages } from '../i18n/ui';
+
+interface Props {
+  lang?: keyof typeof languages;
+}
+
+const { lang } = Astro.props;
+const currentLang = lang || getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
 ---
 
 <section class="relative bg-primary text-white z-40 py-40 md:py-60 min-h-screen flex flex-col justify-center block-rounded-top shadow-[0_-25px_60px_rgba(0,0,0,0.25)] -mt-20 stacked-block" id="expertise">
   <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 lg:grid-cols-2 gap-16 items-center stacked-content w-full">
     <div class="space-y-8 gsap-reveal">
-      <span class="font-poppins font-semibold text-xs text-white tracking-widest uppercase bg-white/10 px-4 py-1.5 rounded-full border border-white/10 inline-block">Expertise</span>
-      <h2 class="font-poppins font-semibold text-2xl sm:text-3xl md:text-4xl text-white leading-tight tracking-tight">Pourquoi choisir FIABILIS.ai ?</h2>
-      <p class="font-poppins font-normal text-base md:text-lg text-white/80 leading-relaxed">Depuis 15 ans, nous accompagnons les entreprises dans la sécurisation de leurs enjeux sociaux. FIABILIS.ai est l'aboutissement de cette expertise, mariée à la puissance de l'IA générative.</p>
+      <span class="font-poppins font-semibold text-xs text-white tracking-widest uppercase bg-white/10 px-4 py-1.5 rounded-full border border-white/10 inline-block">{t('expertise.tag')}</span>
+      <h2 class="font-poppins font-semibold text-2xl sm:text-3xl md:text-4xl text-white leading-tight tracking-tight">{t('expertise.title')}</h2>
+      <p class="font-poppins font-normal text-base md:text-lg text-white/80 leading-relaxed">{t('expertise.desc')}</p>
       
       <div class="grid grid-cols-2 gap-6 pt-4">
         <div class="p-6 md:p-8 bg-white/5 rounded-3xl border border-white/10">
           <div class="font-poppins font-semibold text-3xl md:text-4xl text-white mb-2">15+</div>
-          <div class="font-poppins font-normal text-xs md:text-sm text-white/60">Années d'expertise</div>
+          <div class="font-poppins font-normal text-xs md:text-sm text-white/60">{t('expertise.stat1_label')}</div>
         </div>
         <div class="p-6 md:p-8 bg-white/5 rounded-3xl border border-white/10">
           <div class="font-poppins font-semibold text-3xl md:text-4xl text-white mb-2">2000+</div>
-          <div class="font-poppins font-normal text-xs md:text-sm text-white/60">Clients satisfaits</div>
+          <div class="font-poppins font-normal text-xs md:text-sm text-white/60">{t('expertise.stat2_label')}</div>
         </div>
       </div>
     </div>
@@ -33,9 +43,9 @@
       <div class="absolute -bottom-6 -left-4 md:-bottom-8 md:-left-8 glass-card p-5 md:p-6 rounded-3xl border border-white/20 bg-white/10 backdrop-blur-3xl max-w-xs md:max-w-sm animate-float">
         <div class="flex items-center gap-3 mb-2">
           <div class="w-3 h-3 rounded-full bg-green-400 animate-pulse"></div>
-          <span class="font-poppins font-bold text-xs uppercase tracking-widest text-white">Live Syncing</span>
+          <span class="font-poppins font-bold text-xs uppercase tracking-widest text-white">{t('expertise.float_title')}</span>
         </div>
-        <p class="font-poppins font-normal text-xs md:text-sm text-white/90 leading-relaxed">Interconnectivité totale avec vos outils de paie existants.</p>
+        <p class="font-poppins font-normal text-xs md:text-sm text-white/90 leading-relaxed">{t('expertise.float_desc')}</p>
       </div>
     </div>
   </div>

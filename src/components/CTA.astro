@@ -1,20 +1,30 @@
 ---
 // Block 6: Final CTA (Brand Blue)
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { languages } from '../i18n/ui';
+
+interface Props {
+  lang?: keyof typeof languages;
+}
+
+const { lang } = Astro.props;
+const currentLang = lang || getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
 ---
 
 <section class="relative bg-primary text-white z-[60] py-40 md:py-60 min-h-screen flex flex-col justify-center block-rounded-top shadow-[0_-25px_60px_rgba(0,0,0,0.25)] -mt-20 overflow-hidden stacked-block" id="cta">
   <div class="ai-orb w-full h-full inset-0 opacity-10 scale-150"></div>
   <div class="max-w-5xl mx-auto px-margin-mobile text-center relative z-10 stacked-content gsap-reveal w-full">
-    <h2 class="font-poppins font-semibold text-3xl sm:text-4xl md:text-5xl text-white mb-8 tracking-tight">Prêt à fiabiliser votre futur social ?</h2>
+    <h2 class="font-poppins font-semibold text-3xl sm:text-4xl md:text-5xl text-white mb-8 tracking-tight">{t('cta.title')}</h2>
     <p class="font-poppins font-normal text-base md:text-lg text-white/80 mb-12 max-w-2xl mx-auto leading-relaxed">
-      Rejoignez les leaders qui utilisent déjà FIABILIS.ai pour transformer leurs données RH en avantage compétitif.
+      {t('cta.subtitle')}
     </p>
     <a 
       href="#" 
       class="btn-gradient inline-block px-10 md:px-12 py-5 rounded-full text-white font-poppins font-bold text-sm md:text-base shadow-2xl shadow-secondary/40 border-t border-white/40 cursor-pointer hover:scale-105 transition-transform" 
       style="background-image: linear-gradient(to bottom, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 50%), var(--gradient-3); box-shadow: inset 0 1px 1px rgba(255,255,255,0.4);"
     >
-      Demander une démo personnalisée
+      {t('cta.btn')}
     </a>
   </div>
 </section>

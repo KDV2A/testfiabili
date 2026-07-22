@@ -1,5 +1,16 @@
 ---
 // Block 5: Trust & Security (White)
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { languages } from '../i18n/ui';
+
+interface Props {
+  lang?: keyof typeof languages;
+}
+
+const { lang } = Astro.props;
+const currentLang = lang || getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
 const certifications = [
   { code: "27001", label: "ISO Security", colorClass: "text-primary border-primary/10" },
   { code: "27701", label: "ISO Privacy", colorClass: "text-secondary border-secondary/10" },
@@ -10,7 +21,7 @@ const certifications = [
 
 <section class="relative bg-white z-50 py-40 md:py-60 min-h-screen flex flex-col justify-center block-rounded-top shadow-[0_-25px_60px_rgba(0,0,0,0.08)] -mt-20 stacked-block" id="trust">
   <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop text-center stacked-content w-full">
-    <h2 class="font-poppins font-semibold text-2xl sm:text-3xl md:text-4xl text-primary mb-16 tracking-tight gsap-reveal">Une confiance certifiée</h2>
+    <h2 class="font-poppins font-semibold text-2xl sm:text-3xl md:text-4xl text-primary mb-16 tracking-tight gsap-reveal">{t('trust.title')}</h2>
     
     <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 gsap-card-grid">
       {certifications.map((cert) => (
@@ -24,7 +35,7 @@ const certifications = [
     </div>
 
     <p class="mt-16 font-poppins font-normal text-base md:text-lg text-on-surface-variant max-w-2xl mx-auto leading-relaxed gsap-reveal">
-      Vos données sont cryptées, hébergées souverainement en Europe et traitées selon les standards éthiques les plus élevés.
+      {t('trust.desc')}
     </p>
   </div>
 </section>

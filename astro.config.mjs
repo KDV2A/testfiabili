@@ -11,6 +11,13 @@ import markdoc from '@astrojs/markdoc';
 export default defineConfig({
   adapter: process.argv.includes('dev') ? undefined : cloudflare(),
   integrations: [react(), keystatic(), markdoc()],
+  i18n: {
+    defaultLocale: 'fr',
+    locales: ['fr', 'en', 'es'],
+    routing: {
+      prefixDefaultLocale: false,
+    }
+  },
   redirects: {
     '/admin': '/keystatic',
   },

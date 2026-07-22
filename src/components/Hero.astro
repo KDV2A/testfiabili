@@ -1,5 +1,15 @@
 ---
 // Hero section block (Block 1)
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { languages } from '../i18n/ui';
+
+interface Props {
+  lang?: keyof typeof languages;
+}
+
+const { lang } = Astro.props;
+const currentLang = lang || getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
 ---
 
 <section class="relative bg-white z-10 py-40 md:py-60 min-h-screen flex flex-col items-center justify-center overflow-hidden stacked-block group/hero" id="hero">
@@ -36,10 +46,10 @@
   <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid lg:grid-cols-3 gap-16 items-center relative z-10 stacked-content w-full">
     <div class="lg:col-span-2 space-y-8 gsap-reveal lg:-translate-y-16">
       <h1 class="font-poppins font-semibold text-4xl sm:text-5xl lg:text-6xl leading-[1.15] text-primary tracking-tight">
-        Les outils IA pour la <span class="gradient-text font-bold">conformité</span> RH et paie.
+        {t('hero.title_pre')}<span class="gradient-text font-bold">{t('hero.title_gradient')}</span>{t('hero.title_post')}
       </h1>
       <p class="font-poppins font-normal text-base md:text-lg text-on-surface-variant max-w-2xl leading-relaxed">
-        La plateforme d'<b>outils intelligents</b> dédiée à la <b>fiabilisation</b> des données sociales et à la <b>conformité</b> <b>RH</b> européenne.
+        {t('hero.subtitle')}
       </p>
       
       <div class="flex flex-col sm:flex-row gap-4 items-stretch sm:items-start pt-2">
@@ -48,28 +58,28 @@
           class="btn-gradient px-8 py-4 rounded-full text-white font-poppins font-bold text-sm md:text-base w-full sm:w-auto border-t border-white/40 shadow-lg shadow-secondary/40 flex items-center justify-center text-center cursor-pointer" 
           style="background-image: linear-gradient(to bottom, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 50%), var(--gradient-3); box-shadow: inset 0 1px 1px rgba(255,255,255,0.4);"
         >
-          Commencer l'audit gratuit
+          {t('hero.btn_primary')}
         </a>
         <a 
           href="#solutions" 
           class="bg-white border-2 border-primary text-primary px-8 py-4 rounded-full font-poppins font-bold text-sm md:text-base hover:bg-surface-container-low transition-all shadow-md w-full sm:w-auto flex items-center justify-center gap-2 text-center cursor-pointer"
         >
-          Découvrir nos outils IA <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          {t('hero.btn_secondary')} <span class="material-symbols-outlined text-sm">arrow_forward</span>
         </a>
       </div>
 
       <div class="mt-12 flex flex-wrap gap-4 pt-4">
         <div class="flex items-center gap-3 px-6 py-3 rounded-full bg-surface-container-low border border-outline-variant/20 shadow-sm">
           <span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">history</span>
-          <span class="font-poppins font-medium text-sm text-on-surface">Depuis 2009</span>
+          <span class="font-poppins font-medium text-sm text-on-surface">{t('hero.badge1')}</span>
         </div>
         <div class="flex items-center gap-3 px-6 py-3 rounded-full bg-surface-container-low border border-outline-variant/20 shadow-sm">
           <span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">public</span>
-          <span class="font-poppins font-medium text-sm text-on-surface">Europe &amp; LatAm</span>
+          <span class="font-poppins font-medium text-sm text-on-surface">{t('hero.badge2')}</span>
         </div>
         <div class="flex items-center gap-3 px-6 py-3 rounded-full bg-surface-container-low border border-outline-variant/20 shadow-sm">
           <span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">verified_user</span>
-          <span class="font-poppins font-medium text-sm text-on-surface">Données ISO 27001</span>
+          <span class="font-poppins font-medium text-sm text-on-surface">{t('hero.badge3')}</span>
         </div>
       </div>
     </div>

@@ -1,24 +1,35 @@
 ---
 // Block 2: Solutions Grid (Brand Blue)
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { languages } from '../i18n/ui';
+
+interface Props {
+  lang?: keyof typeof languages;
+}
+
+const { lang } = Astro.props;
+const currentLang = lang || getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
 const solutions = [
   {
     title: "MyVM",
     country: "France",
-    description: "Analyse intelligente du Versement Mobilité pour optimiser vos charges sociales en toute sécurité.",
+    descriptionKey: "solutions.myvm_desc",
     icon: "https://lh3.googleusercontent.com/aida/AP1WRLs-bw1FleF399Y6kfy8pPzbDxAGf8z9QFW1mytmIXBwfA5eHHl0IqIIe_PU9QKDI8txuZdDLPdNYOJJhk9G5Db5LT46_O3cMJETdVCb-AcZjfSSv08X_dc_BSUbwFfgIdxZ6FKwTwH5qJOzeOFkRsTmSVg6lStVlIG_IeWopREcZ606FyBSGkoh0_ORm22PLIExfDlhJ-nXPQ5-WXXADQuNstgMppo728VZTpMOQcM9eFTcYbx4rloowqY5",
     bgColor: "bg-white/10"
   },
   {
     title: "App Chantier",
     country: "Belgique",
-    description: "Contrôle automatisé des accès et de la conformité sur les sites de construction.",
+    descriptionKey: "solutions.chantier_desc",
     icon: "https://lh3.googleusercontent.com/aida/AP1WRLvscBQBE8_Ep0BQYDgfhuQj2Hspx-DTDu06zAM4FZ2Do7yfy6Vq4UKg8smPg4VDmVy6okx7n1-GLtcjQTyKj43BYz8VCp8vDUPZsiy_US1c8pqVjT7vnFnCVYANvVDgAY8cjUJC1j0KDt_OZhO2yW-4rda0ox2Xf2Bqq3aEJy5w9jBu5X-sEcITSLEgjaqe5cql4JUMzfrWvxZfSdmw_tYRPRffINngyxJ7CoZRhQEcF7xcZlL-7VKniaDC",
     bgColor: "bg-secondary-container"
   },
   {
     title: "Expertis",
     country: "France",
-    description: "Module expert de gestion de la conformité pour les audits internes et externes.",
+    descriptionKey: "solutions.expertis_desc",
     icon: "https://lh3.googleusercontent.com/aida/AP1WRLuae_KXtvULUVz2V2fJbtt7QnOwOZUEQwqw14MsbE5V6o8iaPDtBQxq9UyrJwp0OhjIf7gxsnmcs7_H_bHNdX2oPhT2uO0c7q0JN2_lvqaG61nXDu0re85dcNpVHLdHcRTWN1UWMKsHhGKQ6QiV5lNL8mqKWJsPfihyLbwVRKykEFPVJcUlMrKkXvKUTG5aTFdklc1CzPs3hCkx2OOXGCyHZOGiAdNZ19ZkQdt35PPvncttstffjxwh5L0",
     bgColor: "bg-tertiary-container"
   }
@@ -29,8 +40,8 @@ const solutions = [
   <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop stacked-content w-full">
     <div class="mb-16 flex flex-col md:flex-row items-start md:items-end justify-between gap-8 gsap-reveal">
       <div class="max-w-xl">
-        <h2 class="font-poppins font-semibold text-2xl sm:text-3xl md:text-4xl text-white tracking-tight">Nos Outils IA</h2>
-        <p class="font-poppins font-normal text-base md:text-lg text-white/70 mt-3 leading-relaxed">Des outils spécialisés conçus pour répondre aux spécificités réglementaires de chaque territoire.</p>
+        <h2 class="font-poppins font-semibold text-2xl sm:text-3xl md:text-4xl text-white tracking-tight">{t('solutions.title')}</h2>
+        <p class="font-poppins font-normal text-base md:text-lg text-white/70 mt-3 leading-relaxed">{t('solutions.subtitle')}</p>
       </div>
       <div class="flex gap-3">
         <button class="p-3 border border-white/20 rounded-full hover:bg-white/10 transition-all cursor-pointer" aria-label="Précédent">
@@ -50,9 +61,9 @@ const solutions = [
           </div>
           <h3 class="font-poppins font-normal text-xl md:text-2xl text-white mb-2">{item.title}</h3>
           <p class="font-poppins font-semibold text-xs text-secondary-fixed uppercase tracking-widest mb-4">{item.country}</p>
-          <p class="font-poppins font-normal text-base md:text-lg text-white/70 flex-grow leading-relaxed">{item.description}</p>
+          <p class="font-poppins font-normal text-base md:text-lg text-white/70 flex-grow leading-relaxed">{t(item.descriptionKey as any)}</p>
           <a class="mt-8 flex items-center gap-2 text-white font-poppins font-bold text-sm group-hover:gap-4 transition-all" href="#cta">
-            En savoir plus <span class="material-symbols-outlined text-sm">arrow_forward</span>
+            {t('solutions.learn_more')} <span class="material-symbols-outlined text-sm">arrow_forward</span>
           </a>
         </div>
       ))}
